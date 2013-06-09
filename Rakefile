@@ -51,9 +51,11 @@ task :publish do
 
   sha1, _ = `git log -n 1 --oneline`.strip.split(' ')
 
+  origin = ENV['GH_TOKEN'] ? "https://#{ENV['GH_TOKEN']}@github.com/sapporojs/sapporojs.org" : MASTER_REPOSITORY
+
   Dir.chdir 'build' do
     sh 'git add -A'
     sh "git commit -m 'Update with #{sha1}'"
-    sh "git push origin #{PUBLISH_BRANCH}"
+    sh "git push #{origin} #{PUBLISH_BRANCH}"
   end
 end
