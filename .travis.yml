@@ -1,7 +1,8 @@
 language: ruby
 rvm: 2.0.0
 script: bundle exec middleman build
-after_success: if [ "$TRAVIS_BRANCH" == "auto-publish" ]; then; bundle exec rake publish; fi
+after_success: |-
+  if [ "$TRAVIS_BRANCH" == "auto-publish" ]; then; bundle exec rake publish; fi
 
 env:
   global:
