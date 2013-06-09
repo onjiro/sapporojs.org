@@ -1,3 +1,11 @@
 language: ruby
 rvm: 2.0.0
 script: bundle exec middleman build
+after_success: if [ "$TRAVIS_BRANCH" == "master" ]; then; bundle exec rake publish; fi
+
+env:
+  global:
+    - secure: |-
+      PHbQtg+kvmw/IOGvwwH7IK+R0PX2k62m4T4SGsTaTL50fLgHZbG9GTJ6rn9h
+      tTVoKf6aBg2MMY6ffRVhiUYI9X6BdhaXY5CyXndnTozASxriRhrZoeX+31to
+      Oyc9oe70O0ROKovHirnxXoYwbPy90VlTmwFpH+/djWa8EDbn7Jw=
